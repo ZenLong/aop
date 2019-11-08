@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 
 /**
- * 注解方式的AOP
+ * 注解方式的AOP，需要在目标类添加相关注解
  *
  * @author KelvinZ
  * @date 2019-11-06 19:14
