@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.codewalnut.demo</groupId>
-    <artifactId>aop</artifactId>
+    <artifactId>demo-aop</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>aop</name>
     <description>Demo project for Spring Boot AOP</description>
