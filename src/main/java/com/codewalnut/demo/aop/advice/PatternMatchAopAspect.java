@@ -21,8 +21,19 @@ import org.springframework.stereotype.Component;
 public class PatternMatchAopAspect {
     private Logger log = LoggerFactory.getLogger(this.getClass());
 
+    /**
+     * 切入点表达式:所有com.codewalnut.demo.aop.web下所有Controller的公共方法
+     */
     @Pointcut("execution(public * com.codewalnut.demo.aop.web.*Controller.*(..))")
-    public void allControllerPointCut() {
+    public void executionPointCut() {
+    }
+
+    @Pointcut("within(com.codewalnut.demo.aop.web.*)")
+    public void withinPointCut() {
+    }
+
+    @Pointcut("this(com.codewalnut.demo.aop.web.BaseController)")
+    public void thisPointCut() {
     }
 
     /**
@@ -32,15 +43,39 @@ public class PatternMatchAopAspect {
      * @return
      * @throws Throwable
      */
-    @Around("allControllerPointCut()")
+    @Around("executionPointCut()")
     public Object doAroundOnWebController(ProceedingJoinPoint joinPoint) throws Throwable {
         long bgn = System.currentTimeMillis();
 
-        log.info("<<AOP Around Start {}>>", joinPoint);
+        log.info("<<Execution AOP Around Start {}>>", joinPoint);
         Object result = joinPoint.proceed();
 
         long end = System.currentTimeMillis();
-        log.info("<<AOP Around End {} in {} mills>>", joinPoint, end - bgn);
+        log.info("<<Execution AOP Around End {} in {} mills>>", joinPoint, end - bgn);
+        return result;
+    }
+
+    @Around("withinPointCut()")
+    public Object doAroundOnWithinPointCut(ProceedingJoinPoint joinPoint) throws Throwable {
+        long bgn = System.currentTimeMillis();
+
+        log.info("<<WithinPointCut AOP Around Start {}>>", joinPoint);
+        Object result = joinPoint.proceed();
+
+        long end = System.currentTimeMillis();
+        log.info("<<WithinPointCut AOP Around End {} in {} mills>>", joinPoint, end - bgn);
+        return result;
+    }
+
+    @Around("thisPointCut()")
+    public Object doAroundOnThisPointCut(ProceedingJoinPoint joinPoint) throws Throwable {
+        long bgn = System.currentTimeMillis();
+
+        log.info("<<ThisPointCut AOP Around Start {}>>", joinPoint);
+        Object result = joinPoint.proceed();
+
+        long end = System.currentTimeMillis();
+        log.info("<<ThisPointCut AOP Around End {} in {} mills>>", joinPoint, end - bgn);
         return result;
     }
 

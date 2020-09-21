@@ -12,11 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/pattern")
-public class PatternMatchAopController {
+public class PatternMatchAopController implements BaseController {
 
     @GetMapping("/hello")
     public String hello(String content) {
         return "[PatternMatch AOP]: Hello" + content;
     }
 
+    @GetMapping("/test")
+    public String test(Integer number) {
+        return "[PatternMatch AOP]: Hello" + number;
+    }
 }

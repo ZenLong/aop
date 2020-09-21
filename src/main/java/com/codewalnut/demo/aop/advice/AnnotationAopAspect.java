@@ -25,6 +25,9 @@ import java.util.Arrays;
 public class AnnotationAopAspect {
     private Logger log = LoggerFactory.getLogger(this.getClass());
 
+    /**
+     * 注解切入点表达式，带有SampleAop注解的所有方法
+     */
     @Pointcut("@annotation(com.codewalnut.demo.aop.annotation.SampleAop)")
     public void annotationPointCut() {
     }

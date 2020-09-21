@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/anno")
-public class AnnotationAopController {
+public class AnnotationAopController implements BaseController {
 
     @GetMapping("/hello")
     @SampleAop(name = "AccessLogging")
