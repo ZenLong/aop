@@ -1,0 +1,6 @@
+server:
+  servlet:
+    context-path: /aop
+  port: 8080
+  compression:
+    enabled: true
